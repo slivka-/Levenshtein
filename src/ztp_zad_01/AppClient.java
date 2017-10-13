@@ -45,7 +45,18 @@ public class AppClient
         //If both file and input string are OK then proceed.
         if(namesFromFile!=null && inputToMatch!=null)
         {
-            System.out.println("OK");
+            int currentMatchLine = 0; //current best matching line
+            int currentMatchPower = 1000000000; //distance of current best matching line
+            for(int i=0;i<namesFromFile.size()-1;i++)
+            {
+                int dist = Levenshtein.calculateDistance(namesFromFile.get(i), inputToMatch); //calculate distance
+                if(currentMatchPower>dist) //if new distance is smaller then distance of current best matching line, replace
+                {
+                    currentMatchPower = dist;
+                    currentMatchLine = i+1;
+                }
+            }
+            System.out.println(currentMatchLine); //print best matching line number
         }
     }
 }
