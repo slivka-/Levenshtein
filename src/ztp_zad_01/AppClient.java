@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -50,7 +49,7 @@ public class AppClient
             for(int i=0;i<namesFromFile.size()-1;i++)
             {
                 int dist = Levenshtein.calculateDistance(namesFromFile.get(i), inputToMatch); //calculate distance
-                if(currentMatchPower>dist) //if new distance is smaller then distance of current best matching line, replace
+                if(currentMatchPower>dist) //if new distance is smaller then distance of current best matching line then replace old values
                 {
                     currentMatchPower = dist;
                     currentMatchLine = i+1;
